@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+/*.one-book:nth-child(even) {
+  background-color: #999;
+}*/
+.even {
+  background-color: #999;
+}
