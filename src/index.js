@@ -5,6 +5,7 @@ import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
 
+//render components here
 ReactDOM.render(
     // React.createElement(BookList, {books:books}),
     <App />
@@ -12,4 +13,6 @@ ReactDOM.render(
     document.getElementById("react")
 );
 
+
+//what is this for?
 registerServiceWorker();

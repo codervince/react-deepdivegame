@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 
 import logo from './logo.svg';
+import Game from './components/game';
+
 import './App.css';
 
 class App extends React.Component {
   render(){
     return (
       <div>
-      Game here..
+        <Game rows={5} cols={5} />
       </div>
     )
   }
