@@ -23,24 +23,43 @@ class Cell extends React.Component {
     }).length ===1;
 
   }
+
+  canBeClicked(){
+    return this.props.isRecallPhase || this.isSelected();
+  }
   //not correct guess == selected but not in targets
 
   guess(){
 
-    this.props.selectCell(this.props.r, this.props.c);
-    const isCorrectGuess = this.isTarget();
-    console.log(isCorrectGuess);
+    if (this.canBeClicked()){
+      this.props.selectCell(this.props.r, this.props.c);
+    }
+    //else do nothing\
     console.log(this.props.r, this.props.c);
   }
 
   cellClassname(){
-    //guess-true guess-false
-    if(this.isSelected()){
-        return `cell ${this.isTarget()? 'guess-true' : 'guess-false'}`;
+    let className = "cell";
+    const isTarget = this.isTarget(),
+      isSelected = this.isSelected();
+
+    if (isTarget){
+      if(this.props.gameState === 'challenge'){
+        //show blue squares else hide
+        className += ' target';
+      }
+      if(isSelected){
+        className += ' guess-true';
+      }
+    } else {
+      //not selected
+      console.log(isSelected);
+      //not target but sleected = false
+      if (isSelected){
+          className += ' guess-false';
+      }
     }
-    return `cell ${this.isTarget()? 'target' : ''}`;
-
-
+    return className;
   }
 
   render(){
@@ -48,7 +67,7 @@ class Cell extends React.Component {
     return (
       <div className={this.cellClassname()}
         onClick={this.guess}>
-        {this.isSelected() ? '1': '0'}
+
        {this.props.id}
 
       </div>
